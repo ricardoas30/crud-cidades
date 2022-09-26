@@ -1,4 +1,4 @@
-package crudcidades.visao;
+package crudcidades.model;
 
 public class Cidade {
     private final String nome;
