@@ -1,4 +1,4 @@
-package crudcidades.view;
+package crudcidades.controller;
 
 import crudcidades.model.Cidade;
 import org.springframework.stereotype.Controller;
