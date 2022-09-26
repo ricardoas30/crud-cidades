@@ -43,9 +43,10 @@
                 </tr>
             </thead>
             <tbody>
+                <#list listaCidades as cidade>
                 <tr>
-                    <td>Florianópolis</td>
-                    <td>Santa Catarina</td>
+                    <td>${cidade.nome}</td>
+                    <td>${cidade.estado}</td>
                     <td>
                         <div class="d-flex d-justify-content-center">
                             <a class="btn btn-warning mr-3" href="">Alterar</a>
@@ -53,6 +54,7 @@
                         </div>
                     </td>
                 </tr>
+                </#list>
             </tbody>
         </table>
         <!-- Fim Tabela -->
