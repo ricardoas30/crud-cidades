@@ -20,16 +20,27 @@
         <!-- Fim Cabeçalho -->
 
         <!-- Formulário -->
-        <form>
+        <#if cidadeAtual??>
+            <form action="/alterar" method="POST">
+            <input type="hidden" name="nomeAtual" value="${(cidadeAtual.nome)!}"/>
+            <input type="hidden" name="estadoAtual" value="${(cidadeAtual.estado)!}"/>
+        <#else>
+            <form action="/criar" method="POST">
+        </#if>
+
             <div class="form-group">
                 <label for="nome">Cidade:</label>
-                <input type="text" class="form-control" placeholder="Informe o nome da cidade" id="nome">
+                <input value="${(cidadeAtual.nome)!}" type="text" class="form-control" placeholder="Informe o nome da cidade" id="nome" name="nome">
             </div>
             <div class="form-group">
                 <label for="estado">Estado:</label>
-                <input type="text" class="form-control" placeholder="Informe o estado ao qual a cidade pertence" id="estado">
+                <input value="${(cidadeAtual.estado)!}" type="text" class="form-control" placeholder="Informe o estado ao qual a cidade pertence" id="estado" name="estado">
             </div>
-            <button type="submit" class="btn btn-primary">Criar</button>
+                <#if cidadeAtual??>
+                    <button type="submit" class="btn btn-warning">Alterar</button>
+                <#else>
+                    <button type="submit" class="btn btn-primary">Criar</button>
+                </#if>
         </form>
         <!-- Fim Formulário -->
 
@@ -49,8 +60,8 @@
                     <td>${cidade.estado}</td>
                     <td>
                         <div class="d-flex d-justify-content-center">
-                            <a class="btn btn-warning mr-3" href="">Alterar</a>
-                            <a class="btn btn-danger" href="">Excluir</a>
+                            <a class="btn btn-warning mr-3" href="/prepararAlterar?nome=${cidade.nome}&estado=${cidade.estado}">Alterar</a>
+                            <a class="btn btn-danger" href="/excluir?nome=${cidade.nome}&estado=${cidade.estado}">Excluir</a>
                         </div>
                     </td>
                 </tr>
