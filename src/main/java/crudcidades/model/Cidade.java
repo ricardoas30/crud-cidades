@@ -17,6 +17,29 @@ public class Cidade {
         this.estado = estado;
     }
 
+    /**
+     * Semana 05 - Integração Banco de Dados
+     * @return cidadeEntidade
+     */
+    public CidadeEntidade clonar() {
+        var cidadeEntidade = new CidadeEntidade();
+
+        cidadeEntidade.setNome(this.getNome());
+        cidadeEntidade.setEstado(this.getEstado());
+
+        return cidadeEntidade;
+    }
+
+    /**
+     * Semana 05 - Integração Banco de Dados
+     * @param cidade
+     * @return
+     */
+    public Cidade clonar(CidadeEntidade cidade) {
+
+        return new Cidade(cidade.getNome(), cidade.getEstado());
+    }
+
     public String getNome() {
         return nome;
     }
