@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
     <body>
+        <!-- Semana 07 Segurança, aula Logout/Login -->
+        <nav class="navbar navbar-expand-sm bg-dark">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link btn btn-secondary">Sair da aplicação</a>
+                </li>
+            </ul>
+        </nav>
         <div class="container">
             <!-- Cabeçalho -->
             <div class="container-fluid">
