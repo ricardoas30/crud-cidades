@@ -1,7 +1,9 @@
 package crudcidades;
 
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,11 +17,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
+
+    /**
+     * Semana 07 Segurança, aula Autenticação com BD
+     *
+     * Como foi alterado para autenticação usando
+     * o banco de dados, este método, não é
+     * necessário.
+     */
+    /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        */
         /**
          * Conjunto de autorizações de cada usuário.
          */
+        /*
         auth.inMemoryAuthentication()
                 .withUser("ricardo")
                 .password(cifrador().encode("rs-232"))
@@ -29,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(cifrador().encode("1234"))
                 .authorities("admin");
 
-    }
+    }*/
 
     @Bean
     public PasswordEncoder cifrador() {
@@ -53,5 +65,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html").permitAll()
                 .and()
                 .logout().permitAll();
+    }
+
+    /**
+     * Semana 07 Segurança, aula Autenticação com BD
+     */
+    @EventListener(ApplicationReadyEvent.class)
+    public void printSenhas() {
+        System.out.println(this.cifrador().encode("test123"));
     }
 }
